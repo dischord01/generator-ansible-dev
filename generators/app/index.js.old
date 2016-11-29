@@ -1,0 +1,60 @@
+'use strict';
+//Require dependencies
+var yeoman = require('yeoman-generator');
+var chalk  = require('chalk');
+var yosay  = require('yosay');
+var shell  = require('shell.js')
+
+
+module.exports = generators.Base.extend({
+  prompting: function () {
+    return this.prompt([{
+      type    : 'input',
+      name    : 'name',
+      message : 'Your Playbook name',
+      default : this.appname // Default to current folder name
+    }, 
+    {
+      type    : 'confirm',
+      name    : 'cool',
+      message : 'Would you like to enable the Cool feature?'
+    }, 
+    {
+      type: 'list',
+      name: 'box',
+      message: 'Which Vagrant box to use?',
+      choices: ['RHEL7', 'RHEL6.5', 'centos/7'],
+      default: "centos/7",
+      filter: function (val) {
+        return val.toLowerCase();
+      }
+    }]).then(function (answers) {
+      this.log('app name', answers.name);
+      this.log('cool feature', answers.cool);
+      this.log('cool feature', answers.box);
+    }.bind(this));
+},
+
+  
+//Writing Logic here
+writing: function () {
+  //Copy the configuration files
+        this.fs.copyTpl(
+            this.templatePath('Vagrantfile'),
+            this.destinationPath('Vagrantfile'), {
+                name: this.props.box
+            }
+        );
+        this.fs.copy(
+          this.templatePath('_ansible.cfg'),
+          this.destinationPath('ansible.cfg')
+        );
+      
+
+  //Copy application files
+
+  //Install Dependencies
+
+}
+
+});
