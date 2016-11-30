@@ -10,11 +10,32 @@ npm install -g yo
 npm install -g generator-ansible-dev
 ```
 
-Then generate your new project:
+Then generate your new Ansible Playbook:
 
 ```bash
 yo ansible-dev
 ```
+This generator will check to see what Vagrant boxes you have installed locally and present them as a list to choose from to place in your Vagrantfile. 
+
+
+
+Then generate your new Ansible Role:
+
+```bash
+yo ansible-dev:role
+```
+
+Then start up your new Vagrant box.
+
+```bash
+vagrant up
+```
+To provision your Ansible role
+
+```bash
+vagrant provision
+```
+
 
 ## Getting To Know Yeoman
 
