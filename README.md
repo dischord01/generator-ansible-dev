@@ -15,15 +15,26 @@ Then generate your new Ansible Playbook:
 ```bash
 yo ansible-dev
 ```
+
+![](img/playbook.png)
+
+
+
+![](img/playbook-end.png)
+
 This generator will check to see what Vagrant boxes you have installed locally and present them as a list to choose from to place in your Vagrantfile. 
 
-
+![](img/vagrant.png)
 
 Then generate your new Ansible Role:
 
 ```bash
 yo ansible-dev:role
 ```
+![](img/role.png)
+
+![](img/role2.png)
+
 
 Then start up your new Vagrant box.
 
